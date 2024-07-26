@@ -1,33 +1,35 @@
-import { Children, createContext,Text,useState} from "react";
+import React, { createContext, useState } from "react";
 
+export const FavoriteContext = createContext({
+  ids: [],
+  addFavoriteItem: (id) => {},
+  removeFromFavoriteItem: (id) => {}
+});
 
-export const FavoriteContext = createContext(
-      {
-            id:[],
-            addFavroiteItem:(id)=>{},
-            remFromFav:(id)=>{}
-      }
-);
+const FavoriteContextProvider = ({ children }) => {
+  const [favoriteItems, setFavoriteItems] = useState([]);
 
+  const addFavoriteItem = (id) => {
+    setFavoriteItems((currentFavIds) => [...currentFavIds, id]);
+  };
 
-const FavoriteContextProvider =({children})=>{
-      const [favroiteItem, setFavroiteItem] = useState([]);
+  const removeFromFavoriteItem = (id) => {
+    setFavoriteItems((currentFavIds) =>
+      currentFavIds.filter((currentFavId) => currentFavId !== id)
+    );
+  };
 
-      const addFavroiteItem=(id)=>{
-            setFavroiteItem((currentFavId)=>[...currentFavId,id]);
-      }
+  const value = {
+    ids: favoriteItems,
+    addFavoriteItem,
+    removeFromFavoriteItem
+  };
 
-      const removeFromFavroiteItem = (id) =>{
-            setFavroiteItem((currentFavId)=> currentFavId.filter(currentFavId=>currentFavId !== id))
-      }
-
-      const value={
-            ids:favroiteItem,
-            addFavroiteItem:addFavroiteItem,
-            removeFromFavroiteItem: removeFromFavroiteItem
-      } 
-
-      return <FavoriteContext.Provider value={value}> {children} </FavoriteContext.Provider>
-}
+  return (
+    <FavoriteContext.Provider value={value}>
+      {children}
+    </FavoriteContext.Provider>
+  );
+};
 
 export default FavoriteContextProvider;

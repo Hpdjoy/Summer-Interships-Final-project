@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Image, SafeAreaView, Dimensions } from 'react-native';
 
-const SplashScreen = () => {
-  const [showSplash, setShowSplash] = useState(true);
-
+const SplashScreen = ({ navigation }) => {
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowSplash(false);
-    }, 4000); // 4 seconds
+    // Navigate to 'login' after 2 seconds
+    const timer = setTimeout(() => {
+      navigation.navigate('login'); // Make sure 'login' matches exactly
+    }, 2000); // Adjust duration as needed
 
-    return () => clearTimeout(timeoutId);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      {showSplash && (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.imageContainer}>
         <Image
-          source={require('../../assets/google.png')} // Replace with your actual image
+          source={require('../../assets/splash1.png')} // Ensure this path is correct
           style={styles.splashImage}
+          resizeMode="cover" // Ensure the image covers the container
         />
-      )}
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
+
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -31,10 +33,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  imageContainer: {
+    flex: 1,
+    width: width,
+    height: height,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   splashImage: {
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
   },
 });
 

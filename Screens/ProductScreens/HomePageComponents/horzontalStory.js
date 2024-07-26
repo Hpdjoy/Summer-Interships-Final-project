@@ -2,38 +2,44 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 
 const DATA = [
-      {
-        id: '1',
-        title: 'Kurtas & Kurta Sets',
-        image: { uri: 'https://example.com/images/kurtas_kurta_sets.png' }, // Replace with your actual image URL
-      },
-      {
-        id: '2',
-        title: 'Sarees',
-        image: { uri: 'https://example.com/images/sarees.png' }, // Replace with your actual image URL
-      },
-      {
-        id: '3',
-        title: 'Dresses',
-        image: { uri: 'https://example.com/images/dresses.png' }, // Replace with your actual image URL
-      },
-      {
-        id: '4',
-        title: 'Flats & Heels',
-        image: { uri: 'https://example.com/images/flats_heels.png' }, // Replace with your actual image URL
-      },
-      {
-        id: '5',
-        title: 'Handbags',
-        image: { uri: 'https://example.com/images/handbags.png' }, // Replace with your actual image URL
-      },
-      {
-        id: '6',
-        title: 'Shorts',
-        image: { uri: 'https://example.com/images/shorts.png' }, // Replace with your actual image URL
-      },
-    ];
-    
+  {
+    id: '1',
+    title: 'Kurtas & Kurta Sets',
+    image: 
+    'https://i.postimg.cc/rzXP149M/Screenshot-2024-07-26-214631.png',
+  },
+  {
+    id: '2',
+    title: 'Dresses',
+    image: 
+    'https://i.postimg.cc/NFcXR8ng/image.png',
+   
+  },
+  {
+    id: '3',
+    title: 'Sarees',
+    image: 
+    'https://i.postimg.cc/T3q3Wqc2/image.png',
+  },
+  {
+    id: '4',
+    title: 'Flats & Heels',
+    image:
+    'https://i.postimg.cc/zXSfLY5H/image.png',
+  },
+  {
+    id: '5',
+    title: 'Handbags',
+    image:
+    'https://i.postimg.cc/g04SrJtt/image.png',
+  },
+  {
+    id: '6',
+    title: 'Shorts',
+    image: 
+    'https://i.postimg.cc/xCvKqFdf/image.png',
+  },
+];
 
 const HorizontalScrollStory = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -43,8 +49,10 @@ const HorizontalScrollStory = () => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {DATA.map((item) => (
           <View key={item.id} style={[styles.item, selectedId === item.id && styles.selectedItem]}>
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{item.title}</Text>
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: 'lightgray', // Default background color
   },
   selectedItem: {
@@ -75,8 +83,16 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+  textContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    alignItems: 'center',
+    paddingVertical: 5,
+  },
   title: {
-    marginTop: 10,
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
