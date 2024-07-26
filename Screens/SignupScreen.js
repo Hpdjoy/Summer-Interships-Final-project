@@ -5,23 +5,26 @@ import {
   Text,
   TextInput,
   Button,
-  StyleSheet,
-  TouchableOpacity,
   Pressable,
   SafeAreaView,
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import useTheme from './useTheme';
-
 
 const SignupScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-  const handleSignup = () => {
-    console.log("Signup with:", name, email, password);
+  const handleSignup = async () => {
+    try {
+      await AsyncStorage.setItem('user', JSON.stringify({ email, password }));
+      console.log("Signup with:", name, email, password);
+      navigation.navigate("login");
+    } catch (error) {
+      console.error("Error saving data", error);
+    }
   };
 
   const { isDarkMode, themeStyles, toggleTheme } = useTheme();
@@ -58,7 +61,7 @@ const SignupScreen = ({ navigation }) => {
             secureTextEntry
           />
         </View>
-        <View style={{backgroundColor:"green", width:"100%",flexDirection:'row',justifyContent:"flex-end", paddingLeft:20, paddingRight:20,paddingTop:10}}>
+        <View style={{ width:"100%",flexDirection:'row',justifyContent:"flex-end", paddingLeft:20, paddingRight:20,paddingTop:10}}>
             <Pressable  onPress={() => navigation.navigate('login')}><Text style={themeStyles.innerText}>
             Already have account? <Icon name="arrow-forward-outline" size={20} color={themeStyles.iconColor} /></Text>
           </Pressable>
@@ -68,7 +71,7 @@ const SignupScreen = ({ navigation }) => {
       <View style={themeStyles.buttonContainer}>
 
         <View sytle={themeStyles.signupButton}>
-          <Pressable style={themeStyles.button} onPress={()=>navigation.navigate("login")}>
+          <Pressable style={themeStyles.button} onPress={handleSignup}>
             <Text style={themeStyles.ButtonText}>Signup</Text>
           </Pressable>
         </View>
@@ -85,7 +88,6 @@ const SignupScreen = ({ navigation }) => {
         </View>
         <Button title="Toggle Mode" onPress={toggleTheme} />
       </View>
-
     </SafeAreaView>
   );
 };

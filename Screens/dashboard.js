@@ -4,7 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./homeScreen";
 import CartScreen from "./CartScreen";
 import ProfileScreen from "./profileScreen";
-import SettingsScreen from "./SettingScreen";
+import FavroiteScreen from "./FavroiteScreen";
+import ShopScreen from "./ShopScreen";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
@@ -22,8 +23,10 @@ const DashboardScreen = () => {
             iconName = focused ? 'cart' : 'cart-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
+          }  else if (route.name === 'Favroite') {
+            iconName = focused ? 'star' : 'star-outline';
+          }  else if (route.name === 'Shop') {
+            iconName = focused ? 'bag' : 'bag-outline';
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -35,8 +38,9 @@ const DashboardScreen = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Cart" component={CartScreen} />
+      <Tab.Screen name="Shop" component={ShopScreen} />
+      <Tab.Screen name="Favorite" component={FavroiteScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };
