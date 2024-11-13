@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: 'lightgray', // Default background color
+    backgroundColor: 'lightgray', 
   },
   selectedItem: {
-    backgroundColor: 'white', // Change background color for selected item
+    backgroundColor: 'white', 
   },
   image: {
     width: '100%',
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
     alignItems: 'center',
     paddingVertical: 5,
   },

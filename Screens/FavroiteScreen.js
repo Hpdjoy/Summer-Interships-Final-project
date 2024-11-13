@@ -7,7 +7,7 @@ const Tab = createBottomTabNavigator();
 const FavroiteScreen = () => {
   return (
       <View style={styles.container}>
-    <Text>This is home..</Text>
+    <Text>no item</Text>
     </View>
   );
 };

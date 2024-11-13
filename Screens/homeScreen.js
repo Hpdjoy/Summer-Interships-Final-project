@@ -44,7 +44,8 @@ const HomeScreen = ({ navigation }) => {
 const HomeStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MainHome" component={HomeScreen} />
+      <Stack.Screen name="home" component={HomeScreen} 
+       screenOptions={{headerShown:false}} />
       <Stack.Screen name="Product" component={ProductScreen} />
       <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
     </Stack.Navigator>
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     padding: 10,
-    alignItems: 'center', // Center content horizontally
+    alignItems: 'center',
   },
   welcomeText: {
     

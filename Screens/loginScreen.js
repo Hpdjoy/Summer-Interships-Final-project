@@ -33,6 +33,7 @@ const LoginScreen = ({ navigation }) => {
         console.log("Login successful");
         navigation.navigate('dashboard');
       } else {
+        alert("Invalid credentials");
         console.log("Invalid credentials");
       }
     } catch (error) {

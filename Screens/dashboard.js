@@ -24,7 +24,7 @@ const DashboardScreen = () => {
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
           }  else if (route.name === 'Favroite') {
-            iconName = focused ? 'star' : 'star-outline';
+            iconName = focused ? 'heart' : 'heart-outline';
           }  else if (route.name === 'Shop') {
             iconName = focused ? 'bag' : 'bag-outline';
           }
@@ -36,10 +36,10 @@ const DashboardScreen = () => {
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Shop" component={ShopScreen} />
-      <Tab.Screen name="Favorite" component={FavroiteScreen} />
+      <Tab.Screen name="Favroite" component={FavroiteScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

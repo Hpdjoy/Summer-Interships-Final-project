@@ -5,8 +5,8 @@ const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     // Navigate to 'login' after 2 seconds
     const timer = setTimeout(() => {
-      navigation.navigate('login'); // Make sure 'login' matches exactly
-    }, 2000); // Adjust duration as needed
+      navigation.navigate('login');
+    }, 4000); 
 
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -15,9 +15,9 @@ const SplashScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require('../../assets/splash1.png')} // Ensure this path is correct
+          source={require('../../assets/splash1.png')}
           style={styles.splashImage}
-          resizeMode="cover" // Ensure the image covers the container
+          resizeMode="cover" 
         />
       </View>
     </SafeAreaView>

@@ -22,8 +22,9 @@ const ProfileScreen = ({ navigation }) => {
 
   const handleLogout = async () => {
     try {
+      alert("are you Sure to Logout?")
       await AsyncStorage.removeItem('user');
-      navigation.navigate('login'); // Navigate to the login screen
+      navigation.navigate('login'); 
     } catch (error) {
       console.error("Error clearing data", error);
       Alert.alert("Logout Error", "An error occurred while logging out.");
